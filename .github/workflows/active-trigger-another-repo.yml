@@ -1,0 +1,13 @@
+name: Proactively trigger another repo of github action
+  on: workflow_dispatch
+
+jobs:
+  demo:
+    name: Just a demo
+    runs-on: ubuntu-latest
+    uses: peter-evans/repository-dispatch@v2
+    with:
+      token: ${{secrets.REPO_ACCESS_TOKEN}}
+      repository: navelorange1999/passive-github-action
+      event-type: trigger-another-repo
+      client-payload: '{"repository": "${{github.repository}}", "job": "${{ github.job }}", "ref": "${{ github.ref }}"}'
