@@ -1,9 +1,9 @@
 name: Proactively trigger another repo of github action
-  on: workflow_dispatch
+
+on: workflow_dispatch
 
 jobs:
   demo:
-    name: Just a demo
     runs-on: ubuntu-latest
     uses: peter-evans/repository-dispatch@v2
     with:
