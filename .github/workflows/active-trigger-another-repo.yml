@@ -4,6 +4,7 @@ on: workflow_dispatch
 
 jobs:
   demo:
+    runs-on: ubuntu-latest
     uses: peter-evans/repository-dispatch@v2
     with:
       token: ${{secrets.REPO_ACCESS_TOKEN}}
