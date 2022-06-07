@@ -6,9 +6,10 @@ jobs:
   demo:
     runs-on: ubuntu-latest
     steps:
-      - uses: peter-evans/repository-dispatch@v2
-        with:
-          token: ${{secrets.REPO_ACCESS_TOKEN}}
-          repository: navelorange1999/passive-github-action
-          event-type: trigger-another-repo
-          client-payload: '{"repository": "${{github.repository}}", "job": "${{ github.job }}", "ref": "${{ github.ref }}"}'
+      - run: |
+          curl \
+            -X POST \
+            -H 'Authorization: token ${{secrets.REPO_ACCESS_TOKEN}}' \
+            -H 'Accept: application/vnd.github.everest-preview+json' \
+            https://api.github.com/repos/navelorange1999/passive-github-action/dispatches \
+            -d '{"event_type":"trigger-another-repo","client_payload":{"repository": "${{github.repository}}", "job":"${{ github.job }}", "ref":"${{ github.ref }}"}}'
