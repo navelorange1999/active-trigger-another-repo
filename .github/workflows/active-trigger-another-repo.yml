@@ -1,6 +1,12 @@
 name: Proactively trigger another repo of github action
 
-on: workflow_dispatch
+on:
+  push:
+    branches: [testing]
+  release:
+    types: [published]
+  
+
 
 jobs:
   trigger-action:
