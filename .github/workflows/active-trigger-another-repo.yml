@@ -18,4 +18,4 @@ jobs:
             -H 'Authorization: token ${{secrets.REPO_ACCESS_TOKEN}}' \
             -H 'Accept: application/vnd.github.everest-preview+json' \
             https://api.github.com/repos/navelorange1999/passive-github-action/dispatches \
-            -d '{"event_type":"trigger-another-repo","client_payload":{"repository": "${{github.repository}}", "ref_type":"${{github.ref_type}}", "ref_name":"${{github.ref_name}}", "job":"${{ github.job }}"}}'
+            -d '{"event_type":"trigger-another-repo","client_payload":{"repository": "${{github.repository}}", "ref_type":"${{github.ref_type}}", "ref_name":"${{github.ref_name}}", "release_branch":"${{github.event.release.target_commitish}}", "job":"${{ github.job }}"}}'
